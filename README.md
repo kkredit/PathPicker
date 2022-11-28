@@ -1,3 +1,17 @@
+# This Fork
+
+This fork has minimal changes to `src/process_input.py` to get it to simply list
+the files it detects from the input pipe. This hack works well with a shell
+alias:
+
+```sh
+alias files='python3 /path/to/repo/src/process_input.py'
+git show --name-status | files
+# output to stdout: just the files that were changed in the last commit
+```
+
+----
+
 # PathPicker
 
 [![tests](https://github.com/facebook/PathPicker/workflows/tests/badge.svg)](https://github.com/facebook/PathPicker/actions) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

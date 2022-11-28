@@ -42,6 +42,8 @@ def get_line_objs_from_lines(
 
         if not result:
             line_obj: LineBase = SimpleLine(formatted_line, index)
+            # only process matches
+            continue
         else:
             line_obj = LineMatch(
                 formatted_line,
@@ -57,10 +59,12 @@ def get_line_objs_from_lines(
 
 
 def do_program(flags: ScreenFlags) -> None:
-    file_path = state_files.get_pickle_file_path()
+    # file_path = state_files.get_pickle_file_path()
     line_objs = get_line_objs(flags)
     # pickle it so the next program can parse it
-    pickle.dump(line_objs, open(file_path, "wb"))
+    # pickle.dump(line_objs, open(file_path, "wb"))
+    for line in line_objs.values():
+        print(line.get_path())
 
 
 def usage() -> None:
